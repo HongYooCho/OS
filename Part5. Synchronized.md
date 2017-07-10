@@ -16,12 +16,12 @@
 공유되는 데이터에 접근하는 코드의 일부를 critical section이라고 부른다.
 <br><br>즉 한 프로세스가 이 critical section에 들어오게 되면, 다른 프로세스들이 접근하는 것을 막자
 ### Critical section의 기본구조
-`do{
-Entry section
-	Critical section
-Exit section
-	Remainder section
-}while(true);`
+`do{`<br>
+`Entry section`<br>
+	`Critical section`<br>
+`Exit section`<br>
+	`Remainder section`<br>
+`}while(true);`<br>
 
 ### C.S 요구사항
 1. ME: 하나의 프로세스가 크리티컬에 있으면 다른 프로세스들이 절대 들어와선 안된다.
@@ -64,7 +64,7 @@ Exit section
 <br>Empty: 버퍼에 비어있는 수(즉 만들수 있는 수)
 <br>Full=0;(버퍼에 들어갈수 있는 수가 없다)
 
-프로듀서의 경우
+프로듀서의 경우<br><br>
 `버퍼에 들어갈수 있는 지 확인하고,      	wait(empty)`<br>
 `크리티컬 들어갈수 있는 지 확인하고, 	wait(mutex)`<br>
 `수행`<br>
@@ -84,7 +84,7 @@ Exit section
 * 이 두가지 개념이 서로 서로 깨지지 않게 하자
 * 쓰고 있을 때 wrt=0이 된다. 라이팅이 수행되는 중 리드 프로세스가 수행 될 때 뮤텍스는 통과하지만 이프문에서 걸려버리고 라이트를 기다리게 됨
 ### Readers Process
-`do {<`br>
+`do {`<br>
 `wait (mutex);`<br>
 `readcount ++;`<br>
 `if ( readcount == 1 )`<br>
@@ -97,7 +97,7 @@ Exit section
 `if ( readcount == 0 )`<br>
 `signal(wrt);`<br>
 `signal (mutex);`<br>
-} while (TRUE)`<br>
+`} while (TRUE)`<br>
 
 ### Writers Process
 `do{`
