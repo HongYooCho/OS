@@ -29,7 +29,7 @@
 솔직히 데드락이 자주 걸리는 것도 아니고 어쩌다가 한번인데 그냥 껏다 킨다.
 
 ### Deadlock을 다루는 방법 4가지
-1. Deadlock Prevention: 위에 말했던 4가지 이유 중 하나 이상이 일어나지 않도록 막는다.
+1> Deadlock Prevention: 위에 말했던 4가지 이유 중 하나 이상이 일어나지 않도록 막는다.<br>
 &nbsp;&nbsp;1) ME: 모든 리소스를 공유 가능하게 하자 –사실상 불가능
 &nbsp;&nbsp;2) Hold and wait: 프로세스가 자원을 요구할때마다 다른 자원을 홀드 하지 않는 것을 보장
 	- 예 프로세스가 여러 자원을 필요로 할 때 한번에 할당해버리자.
@@ -40,7 +40,7 @@
 	- Dining Philosophers: 자원에 부여된 숫자가 낮은 것부터 집게 하자.
 	- 그러면 한 사람은 두개의 포크를 들수 있으므로 야미 할 수 있음
 -> 자원 효율성도 낮고 시스템 쓰루풋도 낮고 높은 코스트가 든다.
-2. Deadlock avoidance: 어떻게 자원들이 요청되는 지에 대한 정보가 필요하다.
+2> Deadlock avoidance: 어떻게 자원들이 요청되는 지에 대한 정보가 필요하다.<br>
 * 프로세스들은 필요한 최대의 자원 수를 선언한다.
 * 필요한 리소스 타입: available, allocated, needed
 * 이용가능한 자원의 수, 할당된 자원의수, 프로세스가 요구하는 자원의 수
@@ -49,7 +49,7 @@
 
 ### Banker’s Algorithm
 이 시스템이 safe state인지 아닌지 판단을 해준다.
-* Allocation   Max   Available
+* Allocation   Max  &nbsp;&nbsp; Available<br>
 A B C  A B C  A B C<br>
 P0   0 1 0   7 5 3   3 3 2<br>
 P1   2 0 0   3 2 2 <br>
@@ -67,9 +67,9 @@ P4   0 0 2   4 3 3 <br>
 * Available은 4 5 4개. 2는 충족 안됨. 3은 됨. 위의 행동 반복
 * 계속 반복해서 리소스를 다 충족 시킬수 있으면 safe 안되면 unsafe
 
-3. Deadlock Detection
+3> Deadlock Detection<br>
 시스템을 데드락 상태에 들어가게 하는 것
-4. Deadlock Recovery
+4> Deadlock Recovery<br>
 * 데드락을 감지한 후 회복하는 과정
 1) 프로세스를 종료시킨다. 걍 껐다 키는 느낌<br>
 2) 자원 선점을 한다. 데드락을 제거할 수 있는 자원을 선점<br>
