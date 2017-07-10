@@ -68,8 +68,8 @@ P4   0 0 2   4 3 3 <br>
 * 계속 반복해서 리소스를 다 충족 시킬수 있으면 safe 안되면 unsafe
 
 3> Deadlock Detection<br>
-시스템을 데드락 상태에 들어가게 하는 것
-4> Deadlock Recovery<br>
+시스템을 데드락 상태에 들어가게 하는 것<br><br>
+4> Deadlock Recovery
 * 데드락을 감지한 후 회복하는 과정
 1) 프로세스를 종료시킨다. 걍 껐다 키는 느낌<br>
 2) 자원 선점을 한다. 데드락을 제거할 수 있는 자원을 선점<br>
