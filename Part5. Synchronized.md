@@ -65,19 +65,18 @@ Exit section
 <br>Full=0;(버퍼에 들어갈수 있는 수가 없다)
 
 프로듀서의 경우
-`버퍼에 들어갈수 있는 지 확인하고,      	wait(empty)
-크리티컬 들어갈수 있는 지 확인하고, 	wait(mutex)
-수행
-CS 반납하고				signal(mutex)
-하나 늘리고				signal(full)
-`
-`
+`버퍼에 들어갈수 있는 지 확인하고,      	wait(empty)`<br>
+`크리티컬 들어갈수 있는 지 확인하고, 	wait(mutex)`<br>
+`수행`<br>
+`CS 반납하고				signal(mutex)`<br>
+`하나 늘리고				signal(full)`<br>
+
 컨슈머의 경우
-쓸거 있는 지 보고			wait(full)<br>
-크리티컬 들어갈 수 있는 지보고		wait(mutex)<br>
-수행
-CS반납하고				signal(mutex)<br>
-하나 줄이고				signal(empty)<br>
+`쓸거 있는 지 보고			wait(full)`<br>
+`크리티컬 들어갈 수 있는 지보고		wait(mutex)`<br>
+`수행`<br>
+`CS반납하고				signal(mutex)`<br>
+`하나 줄이고				signal(empty)`<br>
 `
 ### Readers-Writers Problem
 * Readers: 오직 읽을 수 만 있다
@@ -85,23 +84,24 @@ CS반납하고				signal(mutex)<br>
 * 이 두가지 개념이 서로 서로 깨지지 않게 하자
 * 쓰고 있을 때 wrt=0이 된다. 라이팅이 수행되는 중 리드 프로세스가 수행 될 때 뮤텍스는 통과하지만 이프문에서 걸려버리고 라이트를 기다리게 됨
 ### Readers Process
-`do {
-wait (mutex);
-readcount ++;
-if ( readcount == 1 )
-wait(wrt);
-signal(mutex)
-// reading is performed
-wait(mutex);
-readcount --;
-if ( readcount == 0 )
-signal(wrt);
-signal (mutex);
-} while (TRUE)
-`
+`do {<`br>
+`wait (mutex);`<br>
+`readcount ++;`<br>
+`if ( readcount == 1 )`<br>
+`wait(wrt);`<br>
+`signal(mutex)`<br>
+`// reading is performed`<br><br>
+
+`wait(mutex);`<br>
+`readcount --;`<br>
+`if ( readcount == 0 )`<br>
+`signal(wrt);`<br>
+`signal (mutex);`<br>
+} while (TRUE)`<br>
+
 ### Writers Process
-`do{
-  wait();
-  CS;
-  signal();
-}while(true);`
+`do{`
+  `wait();`
+  `CS;`
+  `signal();`
+`}while(true);`
