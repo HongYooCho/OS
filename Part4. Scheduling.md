@@ -44,3 +44,8 @@ Non-preemptive vs Preemptive
 <br>하지만 이런식으로 할 경우 데드라인 전까지 일을 못마치는 프로세스들이 발생할 수 있다.
 ### EDF(Earliest Deadline First Scheduling)
 우선순위를 단순히 버스트가 짧은거에 더 높은 것을 두는 것이 아닌 일찍 끝날수록 높은 우선순위를 주게한다. <br>즉 남아있는 프로세스의 양과 들어오는 프로세스 양을 비교하여 짧은 것을 선택해 돌리게하자
+
+## FCFS, RR, priority
+* FCFS: https://github.com/yooyj9309/OS-scheduling-fcfs-
+* RR: https://github.com/yooyj9309/OS-scheduling-RR-
+* Pritority: https://github.com/yooyj9309/OS-scheduling-Priority-
