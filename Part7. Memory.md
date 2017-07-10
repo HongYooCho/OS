@@ -13,7 +13,7 @@
 
 ### Logical vs Physical Address Space
 -	Logical Address: 유저 프로세스에서만 의미있는 주소
-	항상 0으로 시작<br>
+	항상 0으로 시작<br>
 -	Physical Address: physical memory unit이 보는 주소 (실제 주소)
 
 ### Address Space
@@ -30,17 +30,17 @@
 사용자 정의 함수가 메모리에 적재될 때 메모리 특정 주소를 갖는 것<br>
 각가의 바인딩 과정은 한 주소 공간에서 다른 주소 공간으로 매핑 하는 것<br>
 Address binding은 세개의 다른 단계 들에서 일어날 수 있다.<br>
-	Compile time: <br>
-	컴파일러가 실행 프로그램을 만들 때 이미 함수는 변수가 적재될 위치가 다 정해짐<br>
-	옛날 시스템의 방식, 절대코드, 유지보수가 힘듬<br>
-	Load time:<br>
-	컴파일시 프로세스가 메모리 내의 어디로 올지 모르면 컴파링러는 일단 바이너리 코드를 relocatable code로 생성<br>
-	심볼과 진짜 번지수와의 바인딩은 프로그램이 주 메모리로 실제 적재되는 시간에 이루어짐<br>
-	만약 시작 주소가 변한다면 유저코드를 리로드 해야할 필요가 있음<br>
-	Excution time:<br>
-	실행 될 때 매핑이 이루어짐<br>
-	하드웨어의 도움이 필요함(base+registers)<br>
-	프로그램이 실행 되기 전까지 바인딩을 미룬다.<br>
+*	Compile time: <br>
+	컴파일러가 실행 프로그램을 만들 때 이미 함수는 변수가 적재될 위치가 다 정해짐<br>
+	옛날 시스템의 방식, 절대코드, 유지보수가 힘듬<br>
+*	Load time:<br>
+	컴파일시 프로세스가 메모리 내의 어디로 올지 모르면 컴파링러는 일단 바이너리 코드를 relocatable code로 생성<br>
+	심볼과 진짜 번지수와의 바인딩은 프로그램이 주 메모리로 실제 적재되는 시간에 이루어짐<br>
+	만약 시작 주소가 변한다면 유저코드를 리로드 해야할 필요가 있음<br>
+*	Excution time:<br>
+	실행 될 때 매핑이 이루어짐<br>
+	하드웨어의 도움이 필요함(base+registers)<br>
+	프로그램이 실행 되기 전까지 바인딩을 미룬다.<br>
 
 ### Dynamic Relocation
 -	Run time binding: 프로그램이 실행될 때 논리 주소를 피지컬로 바꾸는 작업
@@ -55,22 +55,22 @@ Address binding은 세개의 다른 단계 들에서 일어날 수 있다.<br>
 -	유저 프로세스 high memory(유저 공간)
 ### Relocation-register scheme
 -	Base + limit register는 논리 주소 공간을 정할 수 있다.
-	Relocation register: 베이스랑 같은 의미이며 물리주소의 가장 작은 값을 의미<br>
-	Limit register: 논리 주소의 범위를 포함한다. – 각 논리 주소는 limit register 주소값보다 작아야한다.<br>
+-	Relocation register: 베이스랑 같은 의미이며 물리주소의 가장 작은 값을 의미<br>
+-	Limit register: 논리 주소의 범위를 포함한다. – 각 논리 주소는 limit register 주소값보다 작아야한다.<br>
 -	이 두가지를 통해 주소를 보호하자(커널과 유저가 사용하는 주소에서)
 ### Memory Allocation: Contiguous Allocation
 -	Multiple-partition allocatino
-	파티션의 수에 의해 멀티프로그래밍의 정도가 제한된다.<br>
-	파티션의 사이즈는 다양하게 존재 (효율성)<br>
-	Hole: 이용 가능한 메모리 블락<br>
-	메모리에 군데 군데 있을 수 있다. (size도 다르고 위치도 다 다르고)<br>
-	프로세스가 메모리에 할당 될 때 큰 Hole을 기준으로 할당이 됨<br>
-	OS는 할당된 파티션과 Hole에 대한 정보를 유지<br>
+	파티션의 수에 의해 멀티프로그래밍의 정도가 제한된다.<br>
+	파티션의 사이즈는 다양하게 존재 (효율성)<br>
+	Hole: 이용 가능한 메모리 블락<br>
+	메모리에 군데 군데 있을 수 있다. (size도 다르고 위치도 다 다르고)<br>
+	프로세스가 메모리에 할당 될 때 큰 Hole을 기준으로 할당이 됨<br>
+	OS는 할당된 파티션과 Hole에 대한 정보를 유지<br>
 
 ### External Fragmentation
-	전체 메모리 공간으로 보면 메모리에 올릴수 있는 데 홀의 크기가 부분 부분 작아서 들어가지 못하는 현상<br>
-	Compaction을 통해서 줄일 수 있다. -> relocation이 가능하고 실행 시간에 수행 될수 있을 때만 가능-> 그냥 프로세스들을 딱딱 붙히는 것<br>
-	Non contiguous: 논리 주소 공간을 자유롭게 배치 할당된 주소 영역이 아니라 매핑 되는 데로 ㄱㄱ <br>
+	전체 메모리 공간으로 보면 메모리에 올릴수 있는 데 홀의 크기가 부분 부분 작아서 들어가지 못하는 현상<br>
+	Compaction을 통해서 줄일 수 있다. -> relocation이 가능하고 실행 시간에 수행 될수 있을 때만 가능-> 그냥 프로세스들을 딱딱 붙히는 것<br>
+	Non contiguous: 논리 주소 공간을 자유롭게 배치 할당된 주소 영역이 아니라 매핑 되는 데로 ㄱㄱ <br>
 
 ### Paging
 비 연속적으로 메모리를 관리하는 체계
