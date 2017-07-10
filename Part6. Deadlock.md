@@ -30,16 +30,16 @@
 
 ### Deadlock을 다루는 방법 4가지
 1> Deadlock Prevention: 위에 말했던 4가지 이유 중 하나 이상이 일어나지 않도록 막는다.<br>
-&nbsp;&nbsp;1) ME: 모든 리소스를 공유 가능하게 하자 –사실상 불가능
-&nbsp;&nbsp;2) Hold and wait: 프로세스가 자원을 요구할때마다 다른 자원을 홀드 하지 않는 것을 보장
+1. ME: 모든 리소스를 공유 가능하게 하자 –사실상 불가능
+2. Hold and wait: 프로세스가 자원을 요구할때마다 다른 자원을 홀드 하지 않는 것을 보장
 	- 예 프로세스가 여러 자원을 필요로 할 때 한번에 할당해버리자.
 	- 자원 효율성이 떨어지고 스타베이션이 걸림
 	- 사용하지 않은 자원도 분명 있는데 가지고 만 있고 다른놈들 못쓰게 하기 때문에
-&nbsp;&nbsp;3) No preemption: 기본적으로 말이 안됨-> 스케쥴링 하지말라는 소리
-&nbsp;&nbsp;4) Circular Wait: 순서를 부여하여 자원에 접근하게 하자.
+3. No preemption: 기본적으로 말이 안됨-> 스케쥴링 하지말라는 소리
+;4. Circular Wait: 순서를 부여하여 자원에 접근하게 하자.
 	- Dining Philosophers: 자원에 부여된 숫자가 낮은 것부터 집게 하자.
 	- 그러면 한 사람은 두개의 포크를 들수 있으므로 야미 할 수 있음
--> 자원 효율성도 낮고 시스템 쓰루풋도 낮고 높은 코스트가 든다.
+<br>-> 자원 효율성도 낮고 시스템 쓰루풋도 낮고 높은 코스트가 든다.
 2> Deadlock avoidance: 어떻게 자원들이 요청되는 지에 대한 정보가 필요하다.<br>
 * 프로세스들은 필요한 최대의 자원 수를 선언한다.
 * 필요한 리소스 타입: available, allocated, needed
@@ -50,7 +50,7 @@
 ### Banker’s Algorithm
 이 시스템이 safe state인지 아닌지 판단을 해준다.
 * Allocation   Max  &nbsp;&nbsp; Available<br>
-A B C  A B C  A B C<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A B C  A B C  A B C<br>
 P0   0 1 0   7 5 3   3 3 2<br>
 P1   2 0 0   3 2 2 <br>
 P2   3 0 2   9 0 2 <br>
