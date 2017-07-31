@@ -5,10 +5,10 @@ CPU, Memory, I/O는 bus를 통해서 서로 통신한다.<br>
 
 ### Device Controller
 * 포트, 버스, 디바이스를 작동시킬 수 있는 전기장치의 집합체 = Device controller
-* 프로세서가 I/O에게 명령을 주는 방법
+* 프로세서가 I/O에게 명령을 주는 방법  
 <br>-> 디바이스 컨트롤러는 OS(디바이스 드라이버)가 명령, 주소, 데이터를 기록한 레지스터를 가지고 있다.
 
-###어떻게 프로세스는 I/O와 통신을 하는 가?
+### 어떻게 프로세스는 I/O와 통신을 하는 가?
 1. Direct I/O Instructions
 * CPU가 I/O 명령을 실행하는 것
 * CPU가 직접적으로 디바이스 레지스터에 명령을 쓰는 것
@@ -31,7 +31,7 @@ CPU, Memory, I/O는 bus를 통해서 서로 통신한다.<br>
 3. Data in register: CPU가 I/O에서 data를 읽어오기 위한 레지스터
 4. Data out register: CPU가 I/O에 결과를 쓰기 위한 레지스터
 
-###Polling
+### Polling
 * 폴링에서는 CPU는 능동적이고 I/O는 수동적으로 행한다.
 1. 상태 레지스터: 컨트롤러가 세팅하는 비트 바쁘면 1 놀면 0
 2. Command ready bit: CPU가 세팅하는 비트, 일을 시키면 1, 안시키면 0
