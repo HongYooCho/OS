@@ -6,13 +6,13 @@
 
 ### 메모리의 보호는 정확한 연산을 보장하기 위해 요구된다.
 -	유저 프로그램으로부터 OS를 보호하고
--	또 다른 프로그램으로부터 유저 프로그램을 보호한다.
+-	또 다른 프로그램으로부터 유저 프로그램을 보호한다.  
 각 프로세스들은 분리된 메모리 공간을 가져야한다.<br>
 하드웨어 보호: base+limit registers로 쌍을 이루어 logical address space로 정의함<br>
 즉 Base부터 limit registers를 더한 것이 프로세스에게 할당된 메모리의 양<br>
 
 ### Logical vs Physical Address Space
--	Logical Address: 유저 프로세스에서만 의미있는 주소
+-	Logical Address: 유저 프로세스에서만 의미있는 주소  
 	항상 0으로 시작<br>
 -	Physical Address: physical memory unit이 보는 주소 (실제 주소)
 
@@ -59,7 +59,7 @@ Address binding은 세개의 다른 단계 들에서 일어날 수 있다.<br>
 -	Limit register: 논리 주소의 범위를 포함한다. – 각 논리 주소는 limit register 주소값보다 작아야한다.<br>
 -	이 두가지를 통해 주소를 보호하자(커널과 유저가 사용하는 주소에서)
 ### Memory Allocation: Contiguous Allocation
--	Multiple-partition allocatino
+-	Multiple-partition allocation  
 	파티션의 수에 의해 멀티프로그래밍의 정도가 제한된다.<br>
 	파티션의 사이즈는 다양하게 존재 (효율성)<br>
 	Hole: 이용 가능한 메모리 블락<br>
@@ -68,13 +68,13 @@ Address binding은 세개의 다른 단계 들에서 일어날 수 있다.<br>
 	OS는 할당된 파티션과 Hole에 대한 정보를 유지<br>
 
 ### External Fragmentation
-	전체 메모리 공간으로 보면 메모리에 올릴수 있는 데 홀의 크기가 부분 부분 작아서 들어가지 못하는 현상<br>
-	Compaction을 통해서 줄일 수 있다. -> relocation이 가능하고 실행 시간에 수행 될수 있을 때만 가능-> 그냥 프로세스들을 딱딱 붙히는 것<br>
-	Non contiguous: 논리 주소 공간을 자유롭게 배치 할당된 주소 영역이 아니라 매핑 되는 데로 ㄱㄱ <br>
+전체 메모리 공간으로 보면 메모리에 올릴수 있는 데 홀의 크기가 부분 부분 작아서 들어가지 못하는 현상<br>
+Compaction을 통해서 줄일 수 있다. -> relocation이 가능하고 실행 시간에 수행 될수 있을 때만 가능-> 그냥 프로세스들을 딱딱 붙히는 것<br>
+Non contiguous: 논리 주소 공간을 자유롭게 배치 할당된 주소 영역이 아니라 매핑 되는 데로 ㄱㄱ <br>
 
 ### Paging
 비 연속적으로 메모리를 관리하는 체계
-* 나누는 방법
+* 나누는 방법  
 물리적 주소를 고정된 사이즈로 나눈 것->frames<br>
 논리적 주소를 같은 사이즈로 나눈 것->pages<br>
 페이지 테이블: 프레임과 페이지가 mapping의 정보가 담겨있는 테이블<br>
@@ -109,8 +109,8 @@ Paging에서도 MMU를 사용하기 때문에 프로세스마다 레지스터를
 ### Page Table in Main Memory
 페이지 테이블을 메모리에 올리는 것에 문제 – 항상 두번씩 메모리에 접근해야함<br>
 이유: <br>
-1. 페이지 테이블에서 프레임 번호를 확인
-2. 번호를 확인하고 그 프레임에서 데이터를 읽어옴
+1. 페이지 테이블에서 프레임 번호를 확인  
+2. 번호를 확인하고 그 프레임에서 데이터를 읽어옴  
 이 문제를 해결하기 위해 associative memory 또는 TLBs를 사용<br>
 TLB는 캐쉬와 같은 개념으로 사용된다. (최근에 참조하였던 페이지 테이블 엔트리를 저장하는 것)<br>
 TLB는 레지스터와 같이 속도가 빠른 하드웨어에 저장 시킨다.<br>
