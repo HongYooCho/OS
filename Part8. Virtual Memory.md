@@ -10,21 +10,21 @@
 프로그램을 메모리에 올리는 두가지 방법
 1. 프로그램 전체를 메모리에 올리거나
 2. 필요한 페이지만 올리거나
-->그러므로 필요할 때 필요한 페이지만 메모리에 올리자.
+->그러므로 필요할 때 필요한 페이지만 메모리에 올리자.  
 장점: 디스크로부터의 아이오 작업이 적다. 메모리가 덜 필요하다
 
 ### Pager
-Swapping은 프로세스 전체의 범위로 디스크와 메모리를 바꾸는 것이지만, Pager는 필요한 페이지들만 디스크와 메모리에서 맞바꾸는 작업이다 (swap in, swap out)
-	Objective: 사용하지 않을 페이지를 읽는 것을 피하고, swap 시간과 물리적 메모리양을 줄이자.
-	프로세스의 어떤 일부는 메모리에, 또 다른 일부는 디스크에
-이걸 구분하는 방법은 HW support로 구별하자
+Swapping은 프로세스 전체의 범위로 디스크와 메모리를 바꾸는 것이지만, Pager는 필요한 페이지들만 디스크와 메모리에서 맞바꾸는 작업이다 (swap in, swap out)  
+	Objective: 사용하지 않을 페이지를 읽는 것을 피하고, swap 시간과 물리적 메모리양을 줄이자.  
+	프로세스의 어떤 일부는 메모리에, 또 다른 일부는 디스크에  
+이걸 구분하는 방법은 HW support로 구별하자  
 
 ### Valid-InValid bit
-Page table에서 메모리에 있는 페이지는 v 메모리에 없고 디스크에 있는 페이지는 i
-Page table은 처음에 i로 초기화 (메모리에 페이지가 올라온게 없으므로)
-Page fault: 원하는 페이지가 메모리에 없고 디스크에 저장되어 있을 때 -> 페이지를 참조하는 데 valid bit가 i인 경우
-다른 말로는 trap(Software interrupt)라고 함. 참조해야할 페이지가 메모리에 없으므로 당연한 것
-OS Handling page fault
+Page table에서 메모리에 있는 페이지는 v 메모리에 없고 디스크에 있는 페이지는 i  
+Page table은 처음에 i로 초기화 (메모리에 페이지가 올라온게 없으므로)  
+Page fault: 원하는 페이지가 메모리에 없고 디스크에 저장되어 있을 때 -> 페이지를 참조하는 데 valid bit가 i인 경우  
+다른 말로는 trap(Software interrupt)라고 함. 참조해야할 페이지가 메모리에 없으므로 당연한 것  
+OS Handling page fault  
 1. 사용자가 page를 참조하고 자 하지만 page table의 validation bit는 i.
 2. Validation bit가 i인 것을 확인하면 trap(software interrupt) – 이유 메모리에 올라와 있지 않은 페이지를 참조하려하는 것이므로
 3. OS는 요구하는 페이지가 디스크에 존재하는 지 확인을 하고 있으면 가지고 온다.
@@ -35,15 +35,15 @@ OS Handling page fault
 
 ### Aspects of Demand Paging
 * Demand page를 위한 Hardware support
-- Page table에 validation bit 추가
-- Secondary memory 추가
+  - Page table에 validation bit 추가
+  - Secondary memory 추가
 1) 빠른 속도의 디스크가 필요<br>
 2) Swap할 space가 필요<br>
 3) Restart Instruction -> Page fault가 난 이후로 다시 명령을 수행해야하므로
 
 ### Performance of Demand Paging
-* EAT = (1-p)* memory access+p * page fault time
--> Page fault time= page fault overhead+swap in + swap out+ restart overhead
+* EAT = (1-p)* memory access+p * page fault time  
+-> Page fault time= page fault overhead+swap in + swap out+ restart overhead  
 <br>여기서 말하고자 하는 것: 페이지 폴트가 일어난다는 것은 곧 디스크에 접근해야하는 것
 <br>디스크 접근 = 엄청나게 오랜 시간이 걸리는 작업 -> page fault의 수를 줄이자
 
@@ -66,9 +66,9 @@ Page fault가 일어날 때 두개의 페이지가 이동하게 된다. (in, out
 ->이렇게 함으로써 page-transfer의 overhead를 줄일 수 있다. <br>
 
 ### Benefits of Virtual Memory
-* Protection: 프로세스는 page를 통해 가상 주소만 접근할 수 있어 실제 메모리를 보호할 수 있음
-* Transparency: 프로그래머 입장에서 일련의 가상 주소공간만 알면 된다.
-* Resource exhaustion: 실제 메모리 보다 더 많이 사용할 수 있다.
+* Protection: 프로세스는 page를 통해 가상 주소만 접근할 수 있어 실제 메모리를 보호할 수 있음  
+* Transparency: 프로그래머 입장에서 일련의 가상 주소공간만 알면 된다.  
+* Resource exhaustion: 실제 메모리 보다 더 많이 사용할 수 있다.  
 Demand paging 기법으로 원하는 page만 로드하면 되기 때문에 가능하다. <br>
 
 ### Page replacement Algorithm
@@ -102,7 +102,7 @@ Demand paging 기법으로 원하는 page만 로드하면 되기 때문에 가�
 1. 워킹 셋을 통해 해결.
 <br>Locality의 사이즈를 정확히 알수 없지만 어떤 방법을 통해 범위를 구한다.
 <br>그래서 그 범위가 메모리 사이즈보다 높아지지 않게 조절하는 것
-2. Page Fault Frequency Scheme
+2. Page Fault Frequency Scheme  
 어떤 프로세스에서 fault가 발생하면 free frame을 더 부여하는 방식
 
 ### Memory mapped files
