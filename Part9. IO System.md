@@ -5,15 +5,15 @@ CPU, Memory, I/O는 bus를 통해서 서로 통신한다.<br>
 
 ### Device Controller
 * 포트, 버스, 디바이스를 작동시킬 수 있는 전기장치의 집합체 = Device controller
-* 프로세서가 I/O에게 명령을 주는 방법
+* 프로세서가 I/O에게 명령을 주는 방법  
 <br>-> 디바이스 컨트롤러는 OS(디바이스 드라이버)가 명령, 주소, 데이터를 기록한 레지스터를 가지고 있다.
 
-###어떻게 프로세스는 I/O와 통신을 하는 가?
+### 어떻게 프로세스는 I/O와 통신을 하는 가?
 1. Direct I/O Instructions
 * CPU가 I/O 명령을 실행하는 것
 * CPU가 직접적으로 디바이스 레지스터에 명령을 쓰는 것
 * CPU가 I/O연산이 완료될 때까지 기다리거나 인터럽트 될때까지 자기 할거 하는 것
-- Polling과 Interrupt-driven
+  - Polling과 Interrupt-driven
 2. Memory Mapped I/O
 * 디바이스 컨트롤 레지스터들은 메모리 주소공간과 mapping 되어있다.
 * CPU는 I/O 요청을 맵핑된 메모리 지역을 읽고 씀으로써 실행할 수 있다.
@@ -22,7 +22,7 @@ CPU, Memory, I/O는 bus를 통해서 서로 통신한다.<br>
 
 ### 다이렉트 아이오와 Memory Mapped I/O
 * 다이렉트의 경우 CPU가 컨트롤러에게 데이터를 전송한다는 요청을 하면 메인 메모리에 데이터 하나씩 전송해서 처리하지만
-* 메모리 멥 아이오의 경우, 자신의 메모리 공간에 데이터를 저장하는 것은 디바이스 컨트롤러에 바로 올리는 것과 같으므로 간편해지고 빨라짐
+* 메모리 멥 아이오의 경우, 자신의 메모리 공간에 데이터를 저장하는 것은 디바이스 컨트롤러에 바로 올리는 것과 같으므로 간편해지고 빨라짐  
 -> 즉 I/O디바이스 접근 하기위한 특별한 명령어를 사용할 필요가 없어짐
 
 ### I/O Port Registers
@@ -31,18 +31,18 @@ CPU, Memory, I/O는 bus를 통해서 서로 통신한다.<br>
 3. Data in register: CPU가 I/O에서 data를 읽어오기 위한 레지스터
 4. Data out register: CPU가 I/O에 결과를 쓰기 위한 레지스터
 
-###Polling
+### Polling
 * 폴링에서는 CPU는 능동적이고 I/O는 수동적으로 행한다.
 1. 상태 레지스터: 컨트롤러가 세팅하는 비트 바쁘면 1 놀면 0
 2. Command ready bit: CPU가 세팅하는 비트, 일을 시키면 1, 안시키면 0
 * Busy wait Cycle
 1. CPU가 I/O작업을 요청한다.
-- 만약 비지 비트가 1이면 0일 때까지 계속 체크
+  - 만약 비지 비트가 1이면 0일 때까지 계속 체크
 2. 만약 비지 비트가 0이 되고 컨트롤러가 작업을 수행하면
-- CPU는 data out register에 바이트를 쓰고, Command ready bit를 1로 바꾼다
-- 또한 컨트롤러도 비지 비트를 1로 다시 세팅
+  - CPU는 data out register에 바이트를 쓰고, Command ready bit를 1로 바꾼다
+  - 또한 컨트롤러도 비지 비트를 1로 다시 세팅
 3. 아이오 연산이 끝날 때까지 CPU는 주기적으로 비지 비트를 관찰
-- 아이오가 완료: 비지 비트, command ready bit 모두 0
+  - 아이오가 완료: 비지 비트, command ready bit 모두 0
 
 ### Interrupt Driven I/O cycle
 * CPU는 패시브 I/O 디바이스는 액티브

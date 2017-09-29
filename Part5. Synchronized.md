@@ -76,8 +76,8 @@
 `크리티컬 들어갈 수 있는 지보고		wait(mutex)`<br>
 `수행`<br>
 `CS반납하고				signal(mutex)`<br>
-`하나 줄이고				signal(empty)`<br>
-`
+`하나 줄이고				signal(empty)`<br>  
+
 ### Readers-Writers Problem
 * Readers: 오직 읽을 수 만 있다
 * Writers: 읽고 쓸수 있다.
@@ -100,8 +100,8 @@
 `} while (TRUE)`<br>
 
 ### Writers Process
-`do{`
-  `wait();`
-  `CS;`
-  `signal();`
-`}while(true);`
+`do{`<br>
+  `wait();`<br>
+  `CS;`<br>
+  `signal();`<br>
+`}while(true);`<br>
