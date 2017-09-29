@@ -29,9 +29,10 @@ CPU에 탑재할 프로세스들의 순서를 정함으로써 CPU활용도를 �
 * 처음에 러닝 상태에서 돌고있던 프로세스가 I/O연산이 필요하게 되면 I/O 연산이 끝날 때까지 디바이스 큐에 잔류. 끝나면 레디큐로 넘어가 디스패치 되기를 기다린다.
 ### Long term Scheduler – Job scheduler
 디스크에 있는 어떤 프로세스가 레디큐에 들어 갈지 결정 하는 것
+* 멀티 프로그래밍 정도에 따라서 많이 달라진다 – Long term scheduler
+
 ### Short term Scheduler – CPU scheduler
 * 레디큐에서 어떤 프로세스가 CPU에 들어갈 지 결정하는 것
-* 멀티 프로그래밍 정도에 따라서 많이 달라진다 – Long term scheduler
 * I/O 바운드 프로세스: 연산보단 I/O작업에 더 많이 시간을 투자하는 것
 * CPU 바운드 프로세스: 연산에 더많은 시간을 투자하는 것
 
